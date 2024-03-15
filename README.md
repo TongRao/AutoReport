@@ -5,7 +5,7 @@
 ## Quick Start
 - A sample `template.docx` is provided in `/template`, showing the basics of a `Jinja2` template
 - A sample `main.py` code is provided in the root directory, showing the basics of rendering report content on
-- run `python main.py` to render the sample report, and the result will be output as `report/report.docx`
+- run `python main.py` to render the sample report, and the result will be outputted as `report/report.docx`
 
 In general, a report can be splitted into three parts: `text`, `table`, `image`, you can find common examples in the sample template.
 
