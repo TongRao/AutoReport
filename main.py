@@ -48,7 +48,7 @@ def simple_plot(_image_file):
     plot a simple plot
     :return:
     """
-    plt.figure(figsize=(15, 8))
+    plt.figure(figsize=(10, 10))
     plt.plot(np.random.randint(0, 100, 10))
     plt.title(f"Sample {_image_file}", fontsize=18)
     plt.savefig(_image_file, dpi=300, bbox_inches='tight')
@@ -145,14 +145,23 @@ if __name__ == '__main__':
     }
 
     # image_1
+    img_size = 48.5
     image_1_file = 'img/image_1.jpg'
     simple_plot(image_1_file)
-    image_1 = InlineImage(tpl, image_1_file, width=Mm(145))
+    image_1 = InlineImage(tpl, image_1_file, width=Mm(img_size), height=Mm(img_size))
 
     # image_2
     image_2_file = 'img/image_2.jpg'
     simple_plot(image_2_file)
-    image_2 = InlineImage(tpl, image_2_file, width=Mm(145))
+    image_2 = InlineImage(tpl, image_2_file, width=Mm(img_size), height=Mm(img_size))
+
+    # bullet point
+    bullet_point = {
+        'bullets': [
+            'item 1',
+            'item 2',
+        ],
+    }
 
     # generate the final content dict, render the docx file and store the result
     final_content = {**params,
@@ -161,6 +170,8 @@ if __name__ == '__main__':
                      **{'table_3': table_3},
                      **table_4,
                      **{'image_1': image_1},
-                     **{'image_2': image_2}}
+                     **{'image_2': image_2},
+                     **bullet_point
+                     }
     tpl.render(final_content)
     tpl.save("report/{}".format("report.docx"))
